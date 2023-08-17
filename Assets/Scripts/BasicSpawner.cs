@@ -42,6 +42,29 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
+        NetworkInputData inputData = new NetworkInputData();
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            inputData.MovingDirection += Vector3.left;
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            inputData.MovingDirection += Vector3.right;
+        }
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            inputData.MovingDirection += Vector3.forward;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            inputData.MovingDirection += Vector3.back;
+        }
+
+        input.Set(inputData);
     }
 
     public void OnInputMissing(NetworkRunner runner, PlayerRef player, NetworkInput input)
